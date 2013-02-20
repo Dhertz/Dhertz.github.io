@@ -65,6 +65,12 @@ img.box
 	margin-top: 200px;
 }
 
+img.boxAnimate
+{
+	margin-top: 200px;
+	-webkit-animation: box linear 1s 0 normal both;
+}
+
 img.icon
 {
 	z-index: 100;
@@ -175,4 +181,10 @@ a:hover
 {
 	0% {opacity: 0;}
 	100% {opacity: 100;}
+}
+
+@-webkit-keyframes box
+{
+	0% {opacity: 100;}
+	100% {opacity: 0;}
 }
