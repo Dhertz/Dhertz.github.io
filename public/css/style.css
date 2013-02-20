@@ -1,0 +1,178 @@
+body
+{
+	background-image:url('../images/defaultdesktop.png');
+}
+
+img
+{
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+div.animation {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+
+}
+
+div.contact {
+	display: inline-block;
+	position: absolute;
+	height: 300px;
+	width: 300px;
+	-moz-border-radius: 15px;
+	left: 50%;
+	border-radius: 15px;
+	background-color: white;
+	text-align: center;
+	-webkit-animation: card linear 1s 1 normal both;
+	box-shadow: 0px 0px 50px black;
+
+}
+
+div.startInfo
+{
+	opacity: 0;
+}
+
+div.info
+{
+	text-align: center;
+	position: absolute;
+	opacity: 0;
+	width: 300px;
+	bottom: 50px;
+	-webkit-animation: info linear 2s 1 normal both;
+	-webkit-animation-delay:1s;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	line-height: 180%;
+}
+
+div.ribbon
+{
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -612px;
+	bottom: 20%;
+
+}
+
+img.box
+{
+	margin-top: 200px;
+}
+
+img.icon
+{
+	z-index: 100;
+	position: absolute;
+	top: 230px;
+	margin-left:-94px;
+	left: 50%;
+	animation-name: icon;
+	animation-duration: 5s;
+	/* Firefox: */
+	-moz-animation-name: icon;
+	-moz-animation-duration: 5s;
+	/* Safari and Chrome: */
+	-webkit-animation: icon linear 1s 1 normal both;
+	/* Opera: */
+	-o-animation-name: icon;
+	-o-animation-duration: 5s;
+}
+
+img.start
+{
+	z-index: 100;
+	position: absolute;
+	top: 230px;
+	margin-left:-94px;
+	left: 50%;
+}
+
+img.social
+{
+	display: inline;
+	width: 40px;
+	height: auto;
+}
+
+a:link, :visited
+{
+	color: #282828;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: none;
+}
+
+@keyframes icon
+{
+	0% {width: auto; height: auto; top: -230px;}
+	100% {width: 100px; height: auto; top: -300px;}
+}
+
+@-moz-keyframes icon
+{
+	0% {top: 230px;}
+	100% {width: 100px; height: auto; top: 100px; left: 100px;}
+}
+
+@-webkit-keyframes icon
+{
+	0% {width: 188px; top: 230px;}
+	100% {width: 100px; height: auto; top: 200px; margin-left:-50px}
+}
+
+@keyframes card
+{
+	0% {width: 0px; height: 0px;}
+	100% {width:300; height: 300px;}
+}
+
+@keyframes card
+{
+	0% {width: 0px; height: 0px;}
+	100% {width:300; height: 300px;}
+}
+
+@-moz-keyframes card
+{
+	0% {width: 0px; height: 0px;}
+	100% {width:300; height: 300px;}
+}
+
+@-webkit-keyframes card
+{
+	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
+	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
+}
+
+@keyframes info
+{
+	0% {width: 0px; height: 0px;}
+	100% {width:300; height: 300px;}
+}
+
+@keyframes info
+{
+	0% {width: 0px; height: 0px;}
+	100% {width:300; height: 300px;}
+}
+
+@-moz-keyframes info
+{
+	0% {width: 0px; height: 0px;}
+	100% {width:300; height: 300px;}
+}
+
+@-webkit-keyframes info
+{
+	0% {opacity: 0;}
+	100% {opacity: 100;}
+}
