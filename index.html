@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Daniel Hertz</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+        function ani(){
+            document.getElementById('icon').className ='icon';
+            document.getElementById('contact').className ='contact';
+            document.getElementById('info').className ='info';
+        }
+  </script>
+</head>
+
+<body>
+	<div class='animation'>
+		<img class='box'src="box.png"/>
+		<a onClick='ani()'>
+			<img id='icon' class = 'start' src="icon-start.png"/>
+		</a>
+	</div>
+	<div id='contact'>
+		<div id='info' class='startInfo'>
+			19, Computing - Imperial College London <br>
+			daniel@dhertz.com
+		</div>
+	</div>
+	<div class='ribbon'>
+		<img src="ribbon.png">
+	</div>
+</body>
