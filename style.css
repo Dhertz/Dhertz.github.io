@@ -43,10 +43,11 @@ div.info
 	position: absolute;
 	opacity: 0;
 	width: 300px;
-	bottom: 100px;
+	bottom: 50px;
 	-webkit-animation: info linear 2s 1 normal both;
 	-webkit-animation-delay:1s;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	line-height: 180%;
 }
 
 div.ribbon
@@ -90,6 +91,24 @@ img.start
 	top: 230px;
 	margin-left:-94px;
 	left: 50%;
+}
+
+img.social
+{
+	display: inline;
+	width: 40px;
+	height: auto;
+}
+
+a:link, :visited
+{
+	color: #282828;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: none;
 }
 
 @keyframes icon
