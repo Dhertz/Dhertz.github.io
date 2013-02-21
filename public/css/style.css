@@ -130,6 +130,16 @@ table.ribbon
    vertical-align: middle;
 }
 
+footer
+{
+	position: absolute;
+	width: 100%;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	bottom: 0px;
+	font-size: 10px;
+	text-align: center;
+}
+
 a:link, :visited
 {
 	color: #282828;
