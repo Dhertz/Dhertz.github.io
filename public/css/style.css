@@ -115,6 +115,7 @@ img.social
 
 img.ribbon
 {
+	display: block;
 	max-width: 100%;
 	height: auto;
 }
@@ -130,12 +131,17 @@ table.ribbon
    vertical-align: middle;
 }
 
-footer
+tr.footer
+{
+	height: 100px;
+}
+
+div.footer
 {
 	position: absolute;
+	bottom: 0px;
 	width: 100%;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-	bottom: 0px;
 	font-size: 10px;
 	text-align: center;
 }
