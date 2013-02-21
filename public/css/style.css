@@ -13,11 +13,13 @@ div.animation {
 div.contact {
 	display: inline-block;
 	position: absolute;
-	height: 300px;
+	height: 500px;
 	width: 300px;
-	-moz-border-radius: 15px;
-	left: 50%;
 	border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-o-border-radius: 15;
+	left: 50%;
 	background-color: white;
 	text-align: center;	
 	animation: card 1s both;
@@ -51,12 +53,10 @@ div.info
 
 div.ribbon
 {
-	display: block;
+	display: table-cell;
 	position: absolute;
-	left: 50%;
-	margin-left: -612px;
-	bottom: 20%;
-
+	vertical-align: middle;
+	top: 600px;
 }
 
 
@@ -104,15 +104,31 @@ img.icon
 	-o-animation: icon 1200ms both;
 }
 
-
-
 img.social
 {
 	display: inline;
 	width: 40px;
 	height: auto;
+	margin: 5px;
 }
 
+
+img.ribbon
+{
+	max-width: 100%;
+	height: auto;
+}
+
+table.ribbon
+{
+   position: absolute;
+   width: 100%;
+   top: 600px;
+
+}
+#ribbon td {
+   vertical-align: middle;
+}
 
 a:link, :visited
 {
@@ -146,22 +162,22 @@ a:link, :visited
 @keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
-	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
+	100% {width:300; height: 350px; margin-left: -150px; top:180px;}
 }
 @-webkit-keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
-	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
+	100% {width:300; height: 350px; margin-left: -150px; top:180px;}
 }
 @-moz-keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
-	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
+	100% {width:300; height: 350px; margin-left: -150px; top:180px;}
 }
 @-o-keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
-	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
+	100% {width:300; height: 350px; margin-left: -150px; top:180px;}
 }
 
 
