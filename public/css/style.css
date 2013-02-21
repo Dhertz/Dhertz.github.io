@@ -115,7 +115,6 @@ img.social
 
 img.ribbon
 {
-	display: block;
 	max-width: 100%;
 	height: auto;
 }
@@ -131,19 +130,28 @@ table.ribbon
    vertical-align: middle;
 }
 
-tr.footer
-{
-	height: 100px;
-}
-
 div.footer
 {
 	position: absolute;
-	bottom: 0px;
+	min-height: 800px;
+	height: 100%;
 	width: 100%;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	top: 0%;
 	font-size: 10px;
 	text-align: center;
+	z-index: 0;
+}
+
+div.bottom{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+tr.padding {
+	padding-bottom: 100px;
 }
 
 a:link, :visited
