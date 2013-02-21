@@ -3,13 +3,6 @@ body
 	background-image:url('../images/defaultdesktop.png');
 }
 
-img
-{
-	display: block;
-	margin-left: auto;
-    margin-right: auto;
-}
-
 div.animation {
 	display: block;
 	margin-left: auto;
@@ -26,17 +19,20 @@ div.contact {
 	left: 50%;
 	border-radius: 15px;
 	background-color: white;
-	text-align: center;
-	-webkit-animation: card linear 1s 1 normal both;
+	text-align: center;	
+	animation: card 1s both;
+	-webkit-animation: card 1s both;
+	-moz-animation: card 1s both;
+	-o-animation: card 1s both;
 	box-shadow: 0px 0px 50px black;
 
 }
+
 
 div.startInfo
 {
 	opacity: 0;
 }
-
 div.info
 {
 	text-align: center;
@@ -44,11 +40,14 @@ div.info
 	opacity: 0;
 	width: 300px;
 	bottom: 50px;
-	-webkit-animation: info linear 2s 1 normal both;
-	-webkit-animation-delay:1s;
+	animation: info 1s 1s both;
+	-webkit-animation: info 1s 1s both;
+	-moz-animation: info 1s 1s both;
+	-o-animation: info 1s 1s both;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 	line-height: 180%;
 }
+
 
 div.ribbon
 {
@@ -60,35 +59,28 @@ div.ribbon
 
 }
 
+
+img
+{
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+
 img.box
 {
 	margin-top: 200px;
 }
-
 img.boxAnimate
 {
 	margin-top: 200px;
-	-webkit-animation: box linear 1s 0 normal both;
+	animation: box 1s both;
+	-webkit-animation: box 1s both;
+	-moz-animation: box 1s both;
+	-o-animation: box 1s both;
 }
 
-img.icon
-{
-	z-index: 100;
-	position: absolute;
-	top: 230px;
-	margin-left:-94px;
-	left: 50%;
-	animation-name: icon;
-	animation-duration: 5s;
-	/* Firefox: */
-	-moz-animation-name: icon;
-	-moz-animation-duration: 5s;
-	/* Safari and Chrome: */
-	-webkit-animation: icon linear 1s 1 normal both;
-	/* Opera: */
-	-o-animation-name: icon;
-	-o-animation-duration: 5s;
-}
 
 img.start
 {
@@ -97,7 +89,22 @@ img.start
 	top: 230px;
 	margin-left:-94px;
 	left: 50%;
+	cursor: pointer;
 }
+img.icon
+{
+	z-index: 100;
+	position: absolute;
+	top: 230px;
+	margin-left:-94px;
+	left: 50%;
+	animation: icon 1200ms both;
+	-webkit-animation: icon 1200ms both;
+	-moz-animation: icon 1200ms both;
+	-o-animation: icon 1200ms both;
+}
+
+
 
 img.social
 {
@@ -106,84 +113,96 @@ img.social
 	height: auto;
 }
 
+
 a:link, :visited
 {
 	color: #282828;
 	text-decoration: none;
 }
 
-a:hover
-{
-	text-decoration: none;
-}
 
 @keyframes icon
 {
-	0% {width: auto; height: auto; top: -230px;}
-	100% {width: 100px; height: auto; top: -300px;}
+	0% {width: 188px; top: 230px;}
+	100% {width: 100px; height: auto; top: 200px; margin-left:-50px}
 }
-
-@-moz-keyframes icon
-{
-	0% {top: 230px;}
-	100% {width: 100px; height: auto; top: 100px; left: 100px;}
-}
-
 @-webkit-keyframes icon
 {
 	0% {width: 188px; top: 230px;}
 	100% {width: 100px; height: auto; top: 200px; margin-left:-50px}
 }
+@-moz-keyframes icon
+{
+	0% {width: 188px; top: 230px;}
+	100% {width: 100px; height: auto; top: 200px; margin-left:-50px}
+}
+@-o-keyframes icon
+{
+	0% {width: 188px; top: 230px;}
+	100% {width: 100px; height: auto; top: 200px; margin-left:-50px}
+}
+
 
 @keyframes card
 {
-	0% {width: 0px; height: 0px;}
-	100% {width:300; height: 300px;}
+	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
+	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
 }
-
-@keyframes card
-{
-	0% {width: 0px; height: 0px;}
-	100% {width:300; height: 300px;}
-}
-
-@-moz-keyframes card
-{
-	0% {width: 0px; height: 0px;}
-	100% {width:300; height: 300px;}
-}
-
 @-webkit-keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
 	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
 }
+@-moz-keyframes card
+{
+	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
+	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
+}
+@-o-keyframes card
+{
+	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
+	100% {width:300; height: 300px; margin-left: -150px; top:200px;}
+}
+
 
 @keyframes info
 {
-	0% {width: 0px; height: 0px;}
-	100% {width:300; height: 300px;}
+	0% {opacity: 0;}
+	100% {opacity: 100;}
 }
-
-@keyframes info
-{
-	0% {width: 0px; height: 0px;}
-	100% {width:300; height: 300px;}
-}
-
-@-moz-keyframes info
-{
-	0% {width: 0px; height: 0px;}
-	100% {width:300; height: 300px;}
-}
-
 @-webkit-keyframes info
 {
 	0% {opacity: 0;}
 	100% {opacity: 100;}
 }
+@-moz-keyframes info
+{
+	0% {opacity: 0;}
+	100% {opacity: 100;}
+}
+@-o-keyframes info
+{
+	0% {opacity: 0;}
+	100% {opacity: 100;}
+}
 
+
+@keyframes box
+{
+	0% {opacity: 100;}
+	100% {opacity: 0;}
+}
 @-webkit-keyframes box
+{
+	0% {opacity: 100;}
+	100% {opacity: 0;}
+}
+@-moz-keyframes box
+{
+	0% {opacity: 100;}
+	100% {opacity: 0;}
+}
+@-o-keyframes box
 {
 	0% {opacity: 100;}
 	100% {opacity: 0;}
