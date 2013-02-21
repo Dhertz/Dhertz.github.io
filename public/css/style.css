@@ -140,7 +140,7 @@ div.footer
 	top: 0%;
 	font-size: 10px;
 	text-align: center;
-	z-index: 0;
+	z-index: -10;
 }
 
 div.bottom{
