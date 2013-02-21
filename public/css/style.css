@@ -162,64 +162,64 @@ a:link, :visited
 @keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
-	100% {width:300; height: 350px; margin-left: -150px; top:190px;}
+	100% {width:300px; height: 350px; margin-left: -150px; top:190px;}
 }
 @-webkit-keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
-	100% {width:300; height: 350px; margin-left: -150px; top:190px;}
+	100% {width:300px; height: 350px; margin-left: -150px; top:190px;}
 }
 @-moz-keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
-	100% {width:300; height: 350px; margin-left: -150px; top:190px;}
+	100% {width:300px; height: 350px; margin-left: -150px; top:190px;}
 }
 @-o-keyframes card
 {
 	0% {left: 50%; width: 0px; height: 0px; top: 350px;}
-	100% {width:300; height: 350px; margin-left: -150px; top:190px;}
+	100% {width:300px; height: 350px; margin-left: -150px; top:190px;}
 }
 
 
 @keyframes info
 {
 	0% {opacity: 0;}
-	100% {opacity: 100;}
+	100% {opacity: 1;}
 }
 @-webkit-keyframes info
 {
 	0% {opacity: 0;}
-	100% {opacity: 100;}
+	100% {opacity: 1;}
 }
 @-moz-keyframes info
 {
 	0% {opacity: 0;}
-	100% {opacity: 100;}
+	100% {opacity: 1;}
 }
 @-o-keyframes info
 {
 	0% {opacity: 0;}
-	100% {opacity: 100;}
+	100% {opacity: 1;}
 }
 
 
 @keyframes box
 {
-	0% {opacity: 100;}
+	0% {opacity: 1;}
 	100% {opacity: 0;}
 }
 @-webkit-keyframes box
 {
-	0% {opacity: 100;}
+	0% {opacity: 1;}
 	100% {opacity: 0;}
 }
 @-moz-keyframes box
 {
-	0% {opacity: 100;}
+	0% {opacity: 1;}
 	100% {opacity: 0;}
 }
 @-o-keyframes box
 {
-	0% {opacity: 100;}
+	0% {opacity: 1;}
 	100% {opacity: 0;}
 }
