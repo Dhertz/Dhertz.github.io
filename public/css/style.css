@@ -107,9 +107,11 @@ img
 
 .facebook
 {
+	display: inline;
+	position:relative;
 	margin:0;
 	width:32px;
-	position:relative;
+	height: auto;
 	top:-5px
 }
 
