@@ -41,7 +41,7 @@ body
 	position: absolute;
 	opacity: 0;
 	width: 300px;
-	bottom: 20%;
+	bottom: 15%;
 	animation: info 1s 1s both;
 	-webkit-animation: info 1s 1s both;
 	-moz-animation: info 1s 1s both;
