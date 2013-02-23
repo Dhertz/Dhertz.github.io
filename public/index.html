@@ -23,11 +23,13 @@
 	        document.getElementById('contact').className ='contact';
 	        document.getElementById('info').className ='info';
 	        document.getElementById('box').className ='boxAnimate';
+	        document.getElementById('footer').className = 'footerAnimate'
 	    }
 	</script>
 </head>
 
 <body>
+	<div class='shadow'></div>
 	<div class='animation'>
 		<img class='box' id='box' src="images/box.png" alt=""/>
 		<a onClick='ani()'>
@@ -57,7 +59,7 @@
 	 			<td><img class='ribbon' src="images/ribbon.png" alt="" /></td>
 			</tr>
 		</table>
-	<div class='footer'>
+	<div class='footer' id='footer'>
 		<div class='bottom'>
 			Daniel Hertz 2013 - dhertz.com This site uses Google Analytics. Click <a href="https://tools.google.com/dlpage/gaoptout">here</a> to opt out.
 		</div>
