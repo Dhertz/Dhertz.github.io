@@ -1,6 +1,7 @@
 body
 {
 	background-image:url('../images/bk_sesh.png');
+	margin: 0;
 }
 
 .animation {
@@ -182,10 +183,6 @@ table.ribbon
 	bottom: 0;
 	width: 100%;
 	text-align: center;
-}
-
-tr.padding {
-	padding-bottom: 100px;
 }
 
 a:link, :visited
