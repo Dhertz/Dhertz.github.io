@@ -56,12 +56,10 @@ body
 
 div.ribbon
 {
-	display: table-cell;
 	position: absolute;
 	vertical-align: middle;
 	top: 600px;
 }
-
 
 img
 {
@@ -127,22 +125,16 @@ img
 }
 
 
-img.ribbon
+.ribbon
 {
+	vertical-align: middle;
+	display: block;
+	position: absolute;
 	max-width: 100%;
 	height: auto;
+	top: 600px;
 }
 
-table.ribbon
-{
-   position: absolute;
-   width: 100%;
-   top: 600px;
-
-}
-#ribbon td {
-   vertical-align: middle;
-}
 
 .footer
 {
