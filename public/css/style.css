@@ -124,15 +124,16 @@ img
 	margin: 5px;
 }
 
-
+.dribbon
+{
+	position: absolute;
+	top: 600px;
+	width: 100%;
+}
 .ribbon
 {
-	vertical-align: middle;
-	display: block;
-	position: absolute;
 	max-width: 100%;
 	height: auto;
-	top: 600px;
 }
 
 
