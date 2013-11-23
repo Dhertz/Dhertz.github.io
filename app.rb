@@ -1,6 +1,7 @@
 require "rubygems"
 require "sinatra"
 require "haml"
+require "date"
 
 get "/" do
   dob = Date.new(1993, 8, 25)
