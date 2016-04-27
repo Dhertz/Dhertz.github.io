@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+  <meta charset='UTF-8'>
+  <meta content='1CM3dAJKbb23zN53EEDlunEtHlx4FFSZt6j8oK5i_-A' name='google-site-verification'>
+  <meta content='Daniel Hertz' name='author'>
+  <meta content="Daniel Hertz's Landing page." name='description'>
+  <title>Daniel Hertz</title>
+  <link href='css/style.css' rel='stylesheet' type='text/css'>
+  <link href='images/favicon.ico' rel='icon' sizes='16x16 32x32 64x64' type='image/x-icon'>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38668881-1']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    var last_id = "";
+    //my crappy semaphore
+    var running = false;
+    function request_insta() {
+      if (running) { return; }
+      running = true;
+      d3.xhr("https://www.instagram.com/monkey_jam/media/?max_id="+last_id, function(error, json) {
+        if (error) return console.warn(error);
+        data = JSON.parse(json.response).items;
+        last_id = data[data.length - 1].id;
+        var background = d3.select("div.bg");
+        background.attr("class", "bg")
+        var insta = background.selectAll("div")
+                    .data(data)
+                    .enter()
+                    .append("a")
+                    .attr("href", function(d, i) {
+                      return d.link;
+                    });
+        insta.append("img")
+             .attr("class", "bg")
+             .attr("src", function(d, i) {
+                return d.images.standard_resolution.url;
+             });
+        if (document.getElementById("bg-div").offsetHeight < window.innerHeight) {
+          running = false;
+          request_insta(last_id)
+        }
+        running = false;
+      });
+    }
+    request_insta();
+    window.addEventListener('resize', function() {
+      if (document.getElementById("bg-div").offsetHeight < window.innerHeight) request_insta();
+    });
+  </script>
+</head>
+<body>
+  <div class='animation' itemscope='' itemtype='http://schema.org/Person'>
+    <meta content='Daniel Hertz' itemprop='name'>
+    <meta content='Software Developer at Akamai Technologies' itemprop='jobTitle'>
+      <div class='start'>
+        <div class='name'>Daniel Hertz</div>
+        <div class='contact' id="about">
+          <span id="age"></span>, Software Developer
+          <br>
+          <a href='https://twitter.com/danyoHz'>
+            <img alt='danyoHz' class='social' src='images/twitter.png'>
+          </a>
+          <a href='https://www.instagram.com/monkey_jam'>
+            <img alt='monkey_jam' class='social' src='images/Instagram.png'>
+          </a>
+          <a href='https://github.com/dhertz'>
+            <img alt='dhertz' class='social' src='images/GitHub.png'>
+          </a>
+          <a href='https://www.linkedin.com/pub/daniel-hertz/51/544/959'>
+            <img alt='daniel-hertz' class='social' src='images/Linked-In.png'>
+          </a>
+          <br>
+          Email me: daniel@ here
+        </div>
+      </div>
+  </div>
+  <div class='footer' id='footer'>
+    Daniel Hertz <span id="year"></span> - dhertz.com This site uses Google Analytics. Click
+    <a href='https://tools.google.com/dlpage/gaoptout'>here</a>
+    to opt out.
+  </div>
+  <div class='bg' id='bg-div'></div>
+  <script type="text/javascript">
+    var dob = new Date(1993, 8, 25);
+    var now = new Date();
+    var age = now.getFullYear() - dob.getFullYear() -
+    ((now.getMonth() > dob.getMonth() ||
+      (now.getMonth() == dob.getMonth()) && now.getDay() >= dob.getDay()) ? 0 : 1);
+    document.getElementById("age").innerHTML = age;
+    document.getElementById("year").innerHTML = now.getFullYear();
+  </script>
+</body>
