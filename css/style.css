@@ -1,0 +1,81 @@
+body
+{
+	/*background-image:url('../images/bk_sesh.png');*/
+	margin: 0;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
+img.bg {
+	margin: 0.75%;
+	width: 8.5%;
+}
+
+div.bg {
+	z-index: -100;
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 500px;
+	max-height: 100%;
+	overflow: hidden;
+}
+
+.start
+{
+	z-index: 100;
+	position: fixed;
+	top: 50%;
+	margin-right:-50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	background: white;
+	opacity: 0.92;
+}
+
+.name {
+	font-size: 80px;
+	padding: 10px;
+}
+
+.contact {
+	padding-bottom: 10px;
+}
+
+.facebook
+{
+	display: inline;
+	position:relative;
+	margin:0;
+	width:32px;
+	height: auto;
+	top:-5px
+}
+
+.social
+{
+	display: inline;
+	height: 32px;
+	/*margin: 5px;*/
+}
+
+.footer
+{
+	position: absolute;
+	bottom: 0;
+	font-size: 10px;
+	text-align: center;
+	background: white;
+	margin-right:-50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+	opacity: 0.92;
+
+}
+
+a:link, :visited
+{
+	color: #282828;
+	text-decoration: none;
+}
