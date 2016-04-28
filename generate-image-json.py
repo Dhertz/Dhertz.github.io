@@ -11,15 +11,19 @@ def main():
     sys.exit("Please provide the instagram secret for " +
       "the account you wish to use")
 
-  intsagram_secret = sys.argv[1]
-  images = get_my_media(intsagram_secret)
-  all_images = add_images(intsagram_secret, images, [])
+  instagram_secret = sys.argv[1]
+  images = get_my_media(instagram_secret)
+  all_images = add_images(instagram_secret, images, [])
   print all_images
 
-def add_images(intsagram_secret, images, existing_images):
+def add_images(instagram_secret, images, existing_images):
   ''' Haskell-inspired function that recurses over the list of images,
     finding the first image that we already have in our repo, then adding
     the rest in reverse order. Also works when we start from scratch.
+    I think this should be fine as we are usually adding a single image to
+    the file, so we can escape after 2 calls to add_images().
+    
+    TODO: make existing images ordered dict to to save iterating through it?
   '''
 
   if len(images) == 0:
