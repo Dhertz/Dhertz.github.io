@@ -25,21 +25,24 @@
       if (running) { return; }
       running = true;
       $.getJSON('static/photos.json', function(data) {
-        var backgroundDiv = $('div.bg')
-        for (lastImage; lastImage < data.length; lastImage++) {
+        var backgroundDiv = $('div.bg');
+        function addImage() {
           if (lastImage % 10 != 0 || backgroundDiv.height() < $(window).height()) {
             var a = $('<a>',
                { href: data[lastImage].link
-               }).appendTo(backgroundDiv)
+               }).appendTo(backgroundDiv);
             var img = $('<img />',
                { src: data[lastImage].image,
                  alt: data[lastImage].title,
                  class: 'bg'
                }).appendTo(a);
-          } else {
-            break;
+            if (lastImage < data.length) {
+              ++lastImage;
+              img.load(addImage);
+            }
           }
         }
+        addImage(lastImage, data);
       })
       running = false;
     }
