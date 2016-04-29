@@ -46,7 +46,6 @@ def update_file_github(secret, file_sha, data):
                 'content':b64encode(dumps(data)),
                 'sha':file_sha
                 }
-  print new_commit
   req = put(github_json_file, params={'access_token':secret},
     data=dumps(new_commit))
   if not req.status_code == 200:
@@ -80,7 +79,8 @@ def get_my_media(secret, max_id=""):
     images = [{
                 'link':m['link'],
                 'image':m['images']['standard_resolution']['url'],
-                'id':m['id']
+                'id':m['id'],
+                'title':m['caption']['text']
               }
       for m in resp['data']]
     print req.url

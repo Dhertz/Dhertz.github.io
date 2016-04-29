@@ -7,51 +7,45 @@
   <title>Daniel Hertz</title>
   <link href='static/css/style.css' rel='stylesheet' type='text/css'>
   <link href='static/images/favicon.ico' rel='icon' sizes='16x16 32x32 64x64' type='image/x-icon'>
-  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
   <script>
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38668881-1']);
     _gaq.push(['_trackPageview']);
-    
+
     (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-    var last_id = "";
     //my crappy semaphore
     var running = false;
-    function request_insta() {
+    var lastImage = 0
+    function updateBackground() {
       if (running) { return; }
       running = true;
-      d3.xhr("https://www.instagram.com/monkey_jam/media/?max_id="+last_id, function(error, json) {
-        if (error) return console.warn(error);
-        data = JSON.parse(json.response).items;
-        last_id = data[data.length - 1].id;
-        var background = d3.select("div.bg");
-        background.attr("class", "bg")
-        var insta = background.selectAll("div")
-                    .data(data)
-                    .enter()
-                    .append("a")
-                    .attr("href", function(d, i) {
-                      return d.link;
-                    });
-        insta.append("img")
-             .attr("class", "bg")
-             .attr("src", function(d, i) {
-                return d.images.standard_resolution.url;
-             });
-        if (document.getElementById("bg-div").offsetHeight < window.innerHeight) {
-          running = false;
-          request_insta(last_id)
+      $.getJSON('static/photos.json', function(data) {
+        var backgroundDiv = $('div.bg')
+        for (lastImage; lastImage < data.length; lastImage++) {
+          if (lastImage % 10 != 0 || backgroundDiv.height() < $(window).height()) {
+            var a = $('<a>',
+               { href: data[lastImage].link
+               }).appendTo(backgroundDiv)
+            var img = $('<img />',
+               { src: data[lastImage].image,
+                 alt: data[lastImage].title,
+                 class: 'bg'
+               }).appendTo(a);
+          } else {
+            break;
+          }
         }
-        running = false;
-      });
+      })
+      running = false;
     }
-    request_insta();
-    window.addEventListener('resize', function() {
-      if (document.getElementById("bg-div").offsetHeight < window.innerHeight) request_insta();
+    updateBackground();
+    $( window ).resize( function() {
+      if ($("div.bg").height() < $(window).height()) updateBackground();
     });
   </script>
 </head>
@@ -61,7 +55,7 @@
     <meta content='Software Developer at Akamai Technologies' itemprop='jobTitle'>
       <div class='start'>
         <div class='name'>Daniel Hertz</div>
-        <div class='contact' id="about">
+        <div class='contact'>
           <span id="age"></span>, Software Developer
           <br>
           <a href='https://twitter.com/danyoHz'>
@@ -81,19 +75,19 @@
         </div>
       </div>
   </div>
-  <div class='footer' id='footer'>
+  <div class='footer'>
     Daniel Hertz <span id="year"></span> - dhertz.com This site uses Google Analytics. Click
     <a href='https://tools.google.com/dlpage/gaoptout'>here</a>
     to opt out.
   </div>
-  <div class='bg' id='bg-div'></div>
+  <div class='bg'></div>
   <script type="text/javascript">
     var dob = new Date(1993, 8, 25);
     var now = new Date();
     var age = now.getFullYear() - dob.getFullYear() -
     ((now.getMonth() > dob.getMonth() ||
       (now.getMonth() == dob.getMonth()) && now.getDay() >= dob.getDay()) ? 0 : 1);
-    document.getElementById("age").innerHTML = age;
-    document.getElementById("year").innerHTML = now.getFullYear();
+    $("#age").append(age);
+    $("#year").append(now.getFullYear());
   </script>
 </body>
