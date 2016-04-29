@@ -1,4 +1,4 @@
-Personal website hosted on heroku
+Personal website
 ==========
 http://dhertz.com
 
