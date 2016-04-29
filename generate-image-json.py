@@ -26,7 +26,9 @@ def main():
   existing_images = loads(b64decode(contents_file['content']))
 
   all_images = add_images(args.insta_secret, images, existing_images)
-  update_file_github(args.github_secret, file_sha, all_images)
+  if images:
+    print("Commiting new file to github")
+    update_file_github(args.github_secret, file_sha, all_images)
 
 def get_file_contents_github(secret):
   # Get previous contents of file, and its SHA, so we can update it if need be
@@ -76,13 +78,15 @@ def get_my_media(secret, max_id=""):
   req = get(insta_self_recent, params={'access_token':secret, 'max_id':max_id})
   if req.status_code == 200 and req.json()['meta']['code'] == 200:
     resp = req.json()
-    images = [{
-                'link':m['link'],
-                'image':m['images']['standard_resolution']['url'],
-                'id':m['id'],
-                'title':m['caption']['text']
-              }
-      for m in resp['data']]
+    images = []
+    for m in resp['data']:
+      title = m['caption']['text'] if m['caption'] else ''
+      images.append({
+                  'link':m['link'],
+                  'image':m['images']['standard_resolution']['url'],
+                  'id':m['id'],
+                  'title':title
+                })
     print req.url
     return images
   else:
