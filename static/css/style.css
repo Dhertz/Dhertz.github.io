@@ -1,8 +1,8 @@
 body
 {
-	/*background-image:url('../images/bk_sesh.png');*/
 	margin: 0;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	overflow: hidden;
 }
 
 @media(max-width: 800px) {
@@ -28,10 +28,7 @@ body
 }
 
 .ani {
-	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: fadein 2s; /* Firefox < 16 */
-	-ms-animation: fadein 2s; /* Internet Explorer */
-	-o-animation: fadein 2s; /* Opera < 12.1 */
+	-webkit-animation: fadein 2s; /* Webkit is dumb */
 	animation: fadein 2s;
 }
 
@@ -84,10 +81,6 @@ div.bg {
 	text-align: center;
 	background: white;
 	opacity: 0.92;
-	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-	-ms-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-	-o-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 }
 
@@ -109,7 +102,6 @@ div.bg {
 {
 	display: inline;
 	height: 32px;
-	/*margin: 5px;*/
 }
 
 .footer
@@ -124,12 +116,6 @@ div.bg {
 	transform: translate(-50%, -50%);
 	z-index: 10;
 	opacity: 0.92;
-	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-	-ms-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-	-o-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-
 }
 
 a:link, :visited
