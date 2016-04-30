@@ -10,12 +10,20 @@ body
 		margin: 1.5%;
 		width: 17%;
 	}
+	.name {
+		font-size: 50px;
+		padding: 5px;
+	}
 }
 
 @media(min-width: 801px) {
 	img.bg {
 		margin: 0.75%;
 		width: 8.5%;
+	}
+	.name {
+		font-size: 80px;
+		padding: 10px;
 	}
 }
 
@@ -61,7 +69,6 @@ div.bg {
 	position: absolute;
 	top: 0;
 	left: 0;
-	min-width: 500px;
 	max-height: 100%;
 	overflow: hidden;
 }
@@ -82,11 +89,6 @@ div.bg {
 	-ms-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 	-o-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-}
-
-.name {
-	font-size: 80px;
-	padding: 10px;
 }
 
 .contact {
