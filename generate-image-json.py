@@ -85,7 +85,10 @@ def get_my_media(secret, max_id=""):
       title = m['caption']['text'] if m['caption'] else ''
       images.append({
                   'link':m['link'],
-                  'image':m['images']['low_resolution']['url'],
+                  'large':m['images']['low_resolution']['url'],
+                  'large_w':m['images']['low_resolution']['width'],
+                  'small':m['images']['thumbnail']['url'],
+                  'small_w':m['images']['thumbnail']['width'],
                   'id':m['id'],
                   'title':title
                 })

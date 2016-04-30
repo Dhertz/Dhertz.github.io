@@ -20,22 +20,26 @@
     })();
     //my crappy semaphore
     var running = false;
-    var lastImage = 0
+    var lastImage = 0;
+    var imageWidth = 0;
     function updateBackground() {
       if (running) { return; }
       running = true;
       $.getJSON('static/photos.json', function(data) {
         var backgroundDiv = $('div.bg');
         function addImage() {
-          if (lastImage % 10 != 0 || backgroundDiv.height() < $(window).height()) {
+          if (lastImage % imageWidth != 0 || backgroundDiv.height() < $(window).height()) {
+            var image = data[lastImage];
             var a = $('<a>',
-               { href: data[lastImage].link
+               { href: image.link
                }).appendTo(backgroundDiv);
             var img = $('<img />',
-               { src: data[lastImage].image,
-                 alt: data[lastImage].title,
-                 class: 'bg'
+               { src: image.large,
+                 srcset: image.large + " " + image.large_w + "w, " + image.small + " " + image.small_w + "w",
+                 alt: image.title,
+                 class: 'ani bg'
                }).appendTo(a);
+            imageWidth = img.width();
             if (lastImage < data.length) {
               ++lastImage;
               img.load(addImage);
