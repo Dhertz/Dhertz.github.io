@@ -26,7 +26,7 @@ def main():
   existing_images = loads(b64decode(contents_file['content']))
 
   all_images = add_images(args.insta_secret, images, existing_images)
-  if images:
+  if all_images:
     print("Commiting new file to github")
     update_file_github(args.github_secret, file_sha, all_images)
 
@@ -71,7 +71,9 @@ def add_images(instagram_secret, images, existing_images):
     if len(images) == 1:
       images += get_my_media(instagram_secret, images[0]['id'])
     images = [images[0]] + add_images(instagram_secret, images[1:], existing_images)
-  return images
+    return images
+  else:
+    return []
 
 def get_my_media(secret, max_id=""):
   # Instagram paginates it's media, so we might have to make multiple requests
