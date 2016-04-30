@@ -28,7 +28,8 @@
       $.getJSON('static/photos.json', function(data) {
         var backgroundDiv = $('div.bg');
         function addImage() {
-          if (lastImage % imageWidth != 0 || backgroundDiv.height() < $(window).height()) {
+          if (lastImage % Math.round($(window).width() / imageWidth) != 0 ||
+                backgroundDiv.height() < $(window).height()) {
             var image = data[lastImage];
             var a = $('<a>',
                { href: image.link
@@ -39,8 +40,8 @@
                  alt: image.title,
                  class: 'ani bg'
                }).appendTo(a);
-            imageWidth = img.width();
-            if (lastImage < data.length) {
+            imageWidth = a.width();
+            if (lastImage < data.length - 1) {
               ++lastImage;
               img.load(addImage);
             }
