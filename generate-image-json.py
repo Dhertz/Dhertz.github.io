@@ -25,10 +25,10 @@ def main():
   #Decode the file from basse64 and load the json.
   existing_images = loads(b64decode(contents_file['content']))
 
-  all_images = add_images(args.insta_secret, images, existing_images)
-  if all_images:
+  new_images = add_images(args.insta_secret, images, existing_images)
+  if new_images:
     print("Commiting new file to github")
-    update_file_github(args.github_secret, file_sha, all_images)
+    update_file_github(args.github_secret, file_sha, new_images + existing_images)
 
 def get_file_contents_github(secret):
   # Get previous contents of file, and its SHA, so we can update it if need be
