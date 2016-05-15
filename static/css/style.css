@@ -75,9 +75,6 @@ div.bg {
 	z-index: 100;
 	position: fixed;
 	top: 50%;
-	margin-right:-50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	text-align: center;
 	background: white;
 	opacity: 0.92;
@@ -86,16 +83,6 @@ div.bg {
 
 .contact {
 	padding-bottom: 10px;
-}
-
-.facebook
-{
-	display: inline;
-	position:relative;
-	margin:0;
-	width:32px;
-	height: auto;
-	top:-5px
 }
 
 .social
@@ -111,15 +98,22 @@ div.bg {
 	font-size: 10px;
 	text-align: center;
 	background: white;
-	margin-right:-50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	z-index: 10;
 	opacity: 0.92;
 }
 
+.centre {
+	margin-right:-50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+}
+
 a:link, :visited
 {
-	color: #282828;
+	color: #555555;
 	text-decoration: none;
 }
