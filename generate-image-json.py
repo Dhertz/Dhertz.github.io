@@ -12,7 +12,8 @@ def main(args):
   instagram = Instagram(args.insta_secret)
   images = instagram.get_my_media()
 
-  contents_file = get_file_contents_github(args.github_secret)
+  github = Github(args.github_secret)
+  contents_file = github.get_file_contents()
   file_sha = contents_file['sha']
 
   #Decode the file from basse64 and load the json.
@@ -21,31 +22,35 @@ def main(args):
   new_images = instagram.add_images(images, existing_images)
   if new_images:
     print("Commiting new file to github")
-    #update_file_github(args.github_secret, file_sha, new_images + existing_images)
+    github.update_file(args.github_secret, file_sha, new_images + existing_images)
 
-def get_file_contents_github(secret):
-  # Get previous contents of file, and its SHA, so we can update it if need be
-  req = get(github_json_file, params={'access_token':secret})
-  if not req.status_code == 200:
-    print("Could not retrive original file from GitHub")
-    req.raise_for_status()
-  return req.json()
+class Github:
+  def __init__(self, secret):
+    self.secret = secret
 
-def update_file_github(secret, file_sha, data):
-  #PUT the new conent on github
-  new_commit = {'message': 'Adding new instagram photo to json',
-                'author': {
-                  'name': "Daniel's Raspbery Pi",
-                  'email': 'git@dhertz.com'
-                },
-                'content':b64encode(dumps(data)),
-                'sha':file_sha
-                }
-  req = put(github_json_file, params={'access_token':secret},
-    data=dumps(new_commit))
-  if not req.status_code == 200:
-    print("Could not update file in GitHub")
-    req.raise_for_status()
+  def get_file_contents(self):
+    # Get previous contents of file, and its SHA, so we can update it if need be
+    req = get(github_json_file, params={'access_token':self.secret})
+    if not req.status_code == 200:
+      print("Could not retrive original file from GitHub")
+      req.raise_for_status()
+    return req.json()
+
+  def update_file(self, file_sha, data):
+    #PUT the new conent on github
+    new_commit = {'message': 'Adding new instagram photo to json',
+                  'author': {
+                    'name': "Daniel's Raspbery Pi",
+                    'email': 'git@dhertz.com'
+                  },
+                  'content':b64encode(dumps(data)),
+                  'sha':file_sha
+                  }
+    req = put(github_json_file, params={'access_token':self.secret},
+      data=dumps(new_commit))
+    if not req.status_code == 200:
+      print("Could not update file in GitHub")
+      req.raise_for_status()
 
 class Instagram:
   def __init__(self, secret):
