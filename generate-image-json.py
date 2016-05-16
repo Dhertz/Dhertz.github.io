@@ -88,7 +88,7 @@ class Instagram:
     if len(images) == 0:
       return []
 
-    if images[0]['id'] not in [image['id'] for image in existing_images]:
+    if len(existing_images) == 0 or images[0]['id'] != existing_images[0]['id']:
       if len(images) == 1:
         images += self.get_my_media(images[0]['id'])
       images = [images[0]] + self.add_images(images[1:], existing_images)
