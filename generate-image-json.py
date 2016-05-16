@@ -22,32 +22,26 @@ def main(args):
     print("Commiting new file to github")
     github.update_file(args.github_secret, file_sha, new_images + existing_images)
 
-def test():
-  test_data = [{"id": x} for x in range(4)]
-  test_instagram = Instagram("test")
-  test_instagram.get_my_media = lambda x: []
-  test_images = test_instagram.get_my_media("test")
+class test():
+  def run_test(self, images_input, expected_output):
+    test_result = self.test_instagram.add_images(self.test_data, images_input)
+    assert(expected_output == test_result)
 
-  test_result = test_instagram.add_images(test_data, [])
-  assert(test_data == test_result)
+  def __init__(self):
+    self.test_data = [{"id": x} for x in range(4)]
+    self.test_instagram = Instagram("test")
+    self.test_instagram.get_my_media = lambda x: []
 
-  test_result = test_instagram.add_images(test_data, test_data[-2:])
-  assert(test_data[:2] == test_result)
+    self.run_test([], self.test_data)
+    self.run_test(self.test_data[-2:], self.test_data[:2])
+    self.run_test(self.test_data, [])
 
-  test_result = test_instagram.add_images(test_data, test_data)
-  assert([] == test_result)
+    test_second_page = [{"id": x} for x in range(4, 8)]
+    self.test_instagram.get_my_media = lambda x: [] if x != 3 else test_second_page
 
-  test_second_page = [{"id": x} for x in range(4, 8)]
-  test_instagram.get_my_media = lambda x: [] if x != 3 else test_second_page
-
-  test_result = test_instagram.add_images(test_data, [])
-  assert(test_data + test_second_page == test_result)
-
-  test_result = test_instagram.add_images(test_data, test_second_page)
-  assert(test_data == test_result)
-
-  test_result = test_instagram.add_images(test_data, test_second_page[-2:])
-  assert(test_data + test_second_page[:2] == test_result)
+    self.run_test([], self.test_data + test_second_page)
+    self.run_test(test_second_page, self.test_data)
+    self.run_test(test_second_page[-2:], self.test_data + test_second_page[:2])
 
 class Github:
   def __init__(self, secret):
