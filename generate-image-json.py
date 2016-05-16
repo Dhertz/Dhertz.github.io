@@ -5,8 +5,6 @@ from base64 import b64encode, b64decode
 from json import dumps, loads
 from requests import get, put
 
-insta_self_recent = 'https://api.instagram.com/v1/users/self/media/recent/'
-github_json_file = 'https://api.github.com/repos/dhertz/dhertz.com/contents/static/photos.json'
 
 def main(args):
   instagram = Instagram(args.insta_secret)
@@ -27,10 +25,11 @@ def main(args):
 class Github:
   def __init__(self, secret):
     self.secret = secret
+    self.github_json_file = 'https://api.github.com/repos/dhertz/dhertz.com/contents/static/photos.json'
 
   def get_file_contents(self):
     # Get previous contents of file, and its SHA, so we can update it if need be
-    req = get(github_json_file, params={'access_token':self.secret})
+    req = get(self.github_json_file, params={'access_token':self.secret})
     if not req.status_code == 200:
       print("Could not retrive original file from GitHub")
       req.raise_for_status()
@@ -55,6 +54,7 @@ class Github:
 class Instagram:
   def __init__(self, secret):
     self.secret = secret
+    self.insta_self_recent = 'https://api.instagram.com/v1/users/self/media/recent/'
 
   def add_images(self, images, existing_images):
     '''Function that recurses over the list of images,
@@ -77,7 +77,7 @@ class Instagram:
 
   def get_my_media(self, max_id=""):
     # Instagram paginates it's media, so we might have to make multiple requests
-    req = get(insta_self_recent, params={'access_token':self.secret, 'max_id':max_id})
+    req = get(self.insta_self_recent, params={'access_token':self.secret, 'max_id':max_id})
     if req.status_code == 200 and req.json()['meta']['code'] == 200:
       resp = req.json()
       images = []
