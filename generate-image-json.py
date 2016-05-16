@@ -63,7 +63,7 @@ class Github:
     return req.json()
 
   def update_file(self, file_sha, data):
-    #PUT the new conent on github
+    #PUT the new content on github
     new_commit = {'message': 'Adding new instagram photo to json',
                   'author': {
                     'name': "Daniel's Raspbery Pi",
@@ -97,7 +97,7 @@ class Instagram:
     if images[0]['id'] not in [image['id'] for image in existing_images]:
       if len(images) == 1:
         images += self.get_my_media(images[0]['id'])
-      images = [images[0]] + self.add_images(images[1:])
+      images = [images[0]] + self.add_images(images[1:], existing_images)
       return images
     else:
       return []
