@@ -22,6 +22,33 @@ def main(args):
     print("Commiting new file to github")
     github.update_file(args.github_secret, file_sha, new_images + existing_images)
 
+def test():
+  test_data = [{"id": x} for x in range(4)]
+  test_instagram = Instagram("test")
+  test_instagram.get_my_media = lambda x: []
+  test_images = test_instagram.get_my_media("test")
+
+  test_result = test_instagram.add_images(test_data, [])
+  assert(test_data == test_result)
+
+  test_result = test_instagram.add_images(test_data, test_data[-2:])
+  assert(test_data[:2] == test_result)
+
+  test_result = test_instagram.add_images(test_data, test_data)
+  assert([] == test_result)
+
+  test_second_page = [{"id": x} for x in range(4, 8)]
+  test_instagram.get_my_media = lambda x: [] if x != 3 else test_second_page
+
+  test_result = test_instagram.add_images(test_data, [])
+  assert(test_data + test_second_page == test_result)
+
+  test_result = test_instagram.add_images(test_data, test_second_page)
+  assert(test_data == test_result)
+
+  test_result = test_instagram.add_images(test_data, test_second_page[-2:])
+  assert(test_data + test_second_page[:2] == test_result)
+
 class Github:
   def __init__(self, secret):
     self.secret = secret
@@ -104,6 +131,10 @@ if __name__ == '__main__':
     help="the instagram secret for your account", required=True)
   parser.add_argument("--github-secret",
     help="the github secret for your account", required=True)
+  parser.add_argument("--test", action='store_true')
 
   args = parser.parse_args()
-  main(args)
+  if args.test:
+    test()
+  else:
+    main(args)
