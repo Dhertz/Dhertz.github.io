@@ -22,7 +22,7 @@ def main(args):
     print("Commiting new file to github")
     github.update_file(args.github_secret, file_sha, new_images + existing_images)
 
-class test():
+class Test():
   def run_test(self, images_input, expected_output):
     test_result = self.test_instagram.add_images(self.test_data, images_input)
     assert(expected_output == test_result)
@@ -129,6 +129,6 @@ if __name__ == '__main__':
 
   args = parser.parse_args()
   if args.test:
-    test()
+    Test()
   else:
     main(args)
