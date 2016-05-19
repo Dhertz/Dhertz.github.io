@@ -20,7 +20,7 @@ def main(args):
   new_images = instagram.add_images(images, existing_images)
   if new_images:
     print("Commiting new file to github")
-    github.update_file(args.github_secret, file_sha, new_images + existing_images)
+    github.update_file(file_sha, new_images + existing_images)
 
 class Test():
   def run_test(self, images_input, expected_output):
@@ -66,7 +66,7 @@ class Github:
                   'content':b64encode(dumps(data)),
                   'sha':file_sha
                   }
-    req = put(github_json_file, params={'access_token':self.secret},
+    req = put(self.github_json_file, params={'access_token':self.secret},
       data=dumps(new_commit))
     if not req.status_code == 200:
       print("Could not update file in GitHub")
