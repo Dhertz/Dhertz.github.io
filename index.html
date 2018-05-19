@@ -9,45 +9,6 @@
   <link href='static/css/style.css' rel='stylesheet' type='text/css'>
   <link href='static/images/favicon.ico' rel='icon' sizes='16x16 32x32 64x64' type='image/x-icon'>
   <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-  <script>
-    //my crappy semaphore
-    var running = false;
-    var lastImage = 0;
-    var imageWidth = 0;
-    function updateBackground() {
-      if (running) { return; }
-      running = true;
-      $.getJSON('static/photos.json', function(data) {
-        var backgroundDiv = $('div.bg');
-        function addImage() {
-          if (lastImage % Math.round($(window).width() / imageWidth) != 0 ||
-                backgroundDiv.height() < $(window).height()) {
-            var image = data[lastImage];
-            var a = $('<a>',
-               { href: image.link
-               }).appendTo(backgroundDiv);
-            var img = $('<img />',
-               { src: image.large,
-                 srcset: image.large + " " + image.large_w + "w, " + image.small + " " + image.small_w + "w",
-                 alt: image.title,
-                 class: 'ani bg'
-               }).appendTo(a);
-            imageWidth = a.width();
-            if (lastImage < data.length - 1) {
-              ++lastImage;
-              img.load(addImage);
-            }
-          }
-        }
-        addImage(lastImage, data);
-      })
-      running = false;
-    }
-    updateBackground();
-    $( window ).resize( function() {
-      if ($("div.bg").height() < $(window).height()) updateBackground();
-    });
-  </script>
 </head>
 <body>
   <div class='animation' itemscope='' itemtype='http://schema.org/Person'>
