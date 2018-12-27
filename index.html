@@ -8,7 +8,6 @@
   <title>Daniel Hertz</title>
   <link href='static/css/style.css' rel='stylesheet' type='text/css'>
   <link href='static/images/favicon.ico' rel='icon' sizes='16x16 32x32 64x64' type='image/x-icon'>
-  <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class='animation' itemscope='' itemtype='http://schema.org/Person'>
@@ -17,24 +16,11 @@
       <div class='centre start'>
         <div class='name'>Daniel Hertz</div>
         <div class='contact'>
-          <span id="age"></span>, Software Developer
-          <br>
-          <a href='https://twitter.com/danyoHz'>
-            <img alt='danyoHz' class='social' src='static/images/Twitter.png'>
-          </a>
-          <a href='https://www.instagram.com/monkey_jam'>
-            <img alt='monkey_jam' class='social' src='static/images/Instagram.png'>
-          </a>
-          <a href='https://github.com/dhertz'>
-            <img alt='dhertz' class='social' src='static/images/GitHub.png'>
-          </a>
-<!-- LinkedIn is gross
-         <a href='https://www.linkedin.com/pub/daniel-hertz/51/544/959'>
-            <img alt='daniel-hertz' class='social' src='static/images/Linked-In.png'>
--->
-          </a>
+          <span id="age"></span>, Software Developer</a>
           <br>
           Email me: daniel@ here
+          <div class='button'><a href='https://github.com/dhertz'>GitHub</a></div>
+          <br>
         </div>
       </div>
   </div>
@@ -48,7 +34,7 @@
     var age = now.getFullYear() - dob.getFullYear() -
     ((now.getMonth() > dob.getMonth() ||
       (now.getMonth() == dob.getMonth()) && now.getDay() >= dob.getDay()) ? 0 : 1);
-    $("#age").append(age);
-    $("#year").append(now.getFullYear());
+    document.querySelector("#age").innerText = age;
+    document.querySelector("#year").innerText = now.getFullYear();
   </script>
 </body>
