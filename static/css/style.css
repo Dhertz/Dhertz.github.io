@@ -14,10 +14,6 @@ body
 }
 
 @media(max-width: 800px) {
-	img.bg {
-		margin: 1.5%;
-		width: 17%;
-	}
 	.name {
 		font-size: 50px;
 		padding: 5px;
@@ -25,23 +21,10 @@ body
 }
 
 @media(min-width: 801px) {
-	img.bg {
-		margin: 0.75%;
-		width: 8.5%;
-	}
 	.name {
 		font-size: 80px;
 		padding: 10px;
 	}
-}
-
-div.bg {
-	z-index: -100;
-	position: absolute;
-	top: 0;
-	left: 0;
-	max-height: 100%;
-	overflow: hidden;
 }
 
 .start
@@ -75,6 +58,14 @@ div.bg {
 	background: white;
 	z-index: 10;
 	opacity: 0.92;
+}
+
+.email {
+    margin-top: 10px;
+}
+
+.button-wrapper {
+    margin-top: 20px;
 }
 
 .centre {
