@@ -7,6 +7,10 @@
     font-weight: bold;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
 	margin: 0;
 	font-family: "Chicago", "Krungthep", "Courier Dan", "Courier", "monospace", sans-serif;
@@ -47,7 +51,7 @@ body {
 .name {
     font-size: 22px;
     background-color: white;
-    padding: 0 0.4em 0.1em 0.4em;
+    padding: 0 0.4em 0.125em 0.4em;
 }
 
 .close {
