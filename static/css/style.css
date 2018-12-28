@@ -41,12 +41,13 @@ body {
     border-bottom: 2px solid black;
     background-position: 0 1px;
     background-clip: content-box;
+    min-height: 28px;
 }
 
 .name {
     font-size: 22px;
     background-color: white;
-    padding: 0 7px 0 7px;
+    padding: 0 0.4em 0.1em 0.4em;
 }
 
 .close {
