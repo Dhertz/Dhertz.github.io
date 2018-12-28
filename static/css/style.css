@@ -1,7 +1,15 @@
-body
-{
+/* Please don't look in here, it's embarrassing */
+
+@font-face {
+    font-family: "Courier Dan";
+    src: local("Courier");
+    font-stretch: extra-condensed;
+    font-weight: bold;
+}
+
+body {
 	margin: 0;
-	font-family: "Chicago", "Krungthep", "monospace", sans-serif;
+	font-family: "Chicago", "Krungthep", "Courier Dan", "Courier", "monospace", sans-serif;
 	overflow: hidden;
     background-image:
       linear-gradient(45deg, #000 25%, transparent 25%),
@@ -14,33 +22,55 @@ body
 }
 
 @media(max-width: 800px) {
-	.name {
-		font-size: 50px;
-		padding: 5px;
-	}
+    .title {
+        min-width: 400px;
+    }
 }
 
 @media(min-width: 801px) {
-	.name {
-		font-size: 80px;
-		padding: 10px;
-	}
+    .title {
+        min-width: 600px;
+    }
 }
 
-.start
-{
+.title {
+    padding: 5px 3px 3px 3px;
+    background-image:
+      linear-gradient(#000 50%, transparent 50%);
+    background-size: 4px 4px;
+    border-bottom: 2px solid black;
+    background-position: 0 1px;
+    background-clip: content-box;
+}
+
+.name {
+    font-size: 22px;
+    background-color: white;
+    padding: 0 7px 0 7px;
+}
+
+.close {
+    position: absolute;
+    width: 22px;
+    left: 0;
+    height: 22px;
+    margin-left: 15px;
+    background-color: white;
+    border: 2px solid black;
+    outline: 3px solid white;
+}
+
+.start {
 	z-index: 100;
 	position: fixed;
 	top: 50%;
 	text-align: center;
 	background: white;
-    outline: 3px solid black;
-    outline-offset: -6px;
     border: 2px solid black;
 }
 
 .contact {
-	padding-bottom: 10px;
+	padding: 10px 0 10px 0;
 }
 
 .button {
@@ -49,8 +79,7 @@ body
     padding: 5px 20px 5px 20px;
 }
 
-.footer
-{
+.footer {
 	position: absolute;
 	bottom: 0;
 	font-size: 10px;
