@@ -1,7 +1,13 @@
-body
-{
+@font-face {
+    font-family: "Courier Dan";
+    src: local("Courier");
+    font-stretch: extra-condensed;
+    font-weight: bold;
+}
+
+body {
 	margin: 0;
-	font-family: "Chicago", "Krungthep", "monospace", sans-serif;
+	font-family: "Chicago", "Krungthep", "Courier Dan", "Courier", "monospace", sans-serif;
 	overflow: hidden;
     background-image:
       linear-gradient(45deg, #000 25%, transparent 25%),
@@ -27,8 +33,7 @@ body
 	}
 }
 
-.start
-{
+.start {
 	z-index: 100;
 	position: fixed;
 	top: 50%;
@@ -49,8 +54,7 @@ body
     padding: 5px 20px 5px 20px;
 }
 
-.footer
-{
+.footer {
 	position: absolute;
 	bottom: 0;
 	font-size: 10px;
