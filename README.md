@@ -1,4 +1,4 @@
 Personal website
 ==========
-http://dhertz.com
+https://www.dhertz.com
 
