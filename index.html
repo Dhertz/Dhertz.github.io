@@ -11,11 +11,11 @@
 <body>
   <div class='animation' itemscope='' itemtype='http://schema.org/Person'>
     <meta content='Daniel Hertz' itemprop='name'>
-    <meta content='Software Developer at Deliveroo' itemprop='jobTitle'>
+    <meta content='Engineering Manager at Nightfall AI' itemprop='jobTitle'>
       <div class='centre start'>
-        <div class='title'><div class='close'></div><span class=name>Daniel Hertz</span></div>
+        <div class='title'><div class='close'></div><span class=name>Dan Hertz</span></div>
         <div class='contact'>
-          <div><span id="age"></span>, Software Developer</a></div>
+          <div>Engineering Manager, San Francisco</div>
           <div class='email'>Email me: daniel@ here</div>
           <div class='button-wrapper'><a class='button' href='https://github.com/dhertz'>GitHub</a></div>
           <br>
@@ -23,15 +23,10 @@
       </div>
   </div>
   <div class='centre footer'>
-    Daniel Hertz <span id="year"></span> - dhertz.com. This page no longer tracks your visits.
+    Daniel Hertz <span id="year"></span> - dhertz.com.
   </div>
   <script type="text/javascript">
-    var dob = new Date(1993, 8, 25);
     var now = new Date();
-    var age = now.getFullYear() - dob.getFullYear() -
-    ((now.getMonth() > dob.getMonth() ||
-      (now.getMonth() == dob.getMonth()) && now.getDay() >= dob.getDay()) ? 0 : 1);
-    document.querySelector("#age").innerText = age;
     document.querySelector("#year").innerText = now.getFullYear();
   </script>
 </body>
