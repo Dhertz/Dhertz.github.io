@@ -10,11 +10,24 @@
   <link href='static/images/favicon.ico' rel='icon' sizes='16x16 32x32 64x64' type='image/x-icon'>
 </head>
 <body>
+  <div id="desktop-trash" class="trash-can">
+    <div class="trash-icon">
+      <div class="trash-handle"></div>
+      <div class="trash-top"></div>
+      <div class="trash-body">
+        <div class="trash-line"></div>
+        <div class="trash-line"></div>
+        <div class="trash-line"></div>
+        <div class="trash-line"></div>
+      </div>
+    </div>
+    <div class="trash-label">Trash</div>
+  </div>
   <div class='animation' itemscope='' itemtype='http://schema.org/Person'>
     <meta content='Dan Hertz' itemprop='name'>
     <meta content='Engineering Manager at Nightfall AI' itemprop='jobTitle'>
-      <div class='centre start'>
-        <div class='title'><div class='close'></div><span class=name>Dan Hertz</span></div>
+      <div class='centre start' id="draggable-window">
+        <div class='title'><div class='close' id="close-button"></div><span class=name>Dan Hertz</span></div>
         <div class='contact'>
           <div>Engineering Manager, San Francisco</div>
           <div class='email'>Email me: daniel@ here</div>
@@ -29,5 +42,48 @@
   <script type="text/javascript">
     var now = new Date();
     document.querySelector("#year").innerText = now.getFullYear();
+
+    const draggableWindow = document.getElementById('draggable-window');
+    const titleBar = draggableWindow.querySelector('.title');
+    let isDragging = false;
+    let startX;
+    let startY;
+    let xOffset = -draggableWindow.clientWidth / 2;
+    let yOffset = -draggableWindow.clientHeight / 2;
+
+    titleBar.addEventListener('mousedown', dragStart);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', dragEnd);
+
+    function dragStart(e) {
+      if (e.target === titleBar || e.target.parentNode === titleBar) {
+        isDragging = true;
+        startX = e.clientX - xOffset;
+        startY = e.clientY - yOffset;
+      }
+    }
+
+    function drag(e) {
+      if (isDragging) {
+        e.preventDefault();
+        xOffset = e.clientX - startX;
+        yOffset = e.clientY - startY;
+        setTranslate(xOffset, yOffset, draggableWindow);
+      }
+    }
+
+    function dragEnd(e) {
+      isDragging = false;
+    }
+
+    function setTranslate(xPos, yPos, el) {
+      el.style.transform = `translate(${xPos}px, ${yPos}px)`;
+    }
+
+    // Make the close button functional
+    const closeButton = document.getElementById('close-button');
+    closeButton.addEventListener('click', () => {
+      draggableWindow.style.display = 'none';
+    });
   </script>
 </body>

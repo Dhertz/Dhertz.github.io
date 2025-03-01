@@ -54,6 +54,12 @@ body {
     background-position: 0 1px;
     background-clip: content-box;
     height: 28px;
+    cursor: grab;
+    user-select: none;
+}
+
+.title:active {
+    cursor: grabbing;
 }
 
 .name {
@@ -71,6 +77,16 @@ body {
     background-color: white;
     border: 2px solid black;
     outline: 3px solid white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.close:hover {
+    background-color: #000;
+}
+
+.close:active {
+    background-color: #444;
 }
 
 .start {
@@ -120,4 +136,113 @@ a:link, :visited
 {
 	color: #555555;
 	text-decoration: none;
+}
+
+.trash-can {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    cursor: pointer;
+    text-align: center;
+    width: 80px;
+}
+
+.trash-icon {
+    width: 48px;
+    height: 51px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+}
+
+.trash-top {
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 1px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+.trash-handle {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 2px;
+    background: white;
+    border-radius: 1px;
+    border: 2px solid black;
+}
+
+.trash-body {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 44px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 1px;
+}
+
+.trash-line {
+    position: absolute;
+    width: 2px;
+    height: 32px;
+    background: black;
+    top: 5px;
+    border-radius: 1px;
+}
+
+.trash-line::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 4px;
+    background: black;
+    top: -2px;
+    right: 2px;
+}
+
+.trash-line::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 4px;
+    background: black;
+    bottom: -2px;
+    right: 2px;
+}
+
+.trash-line:nth-child(1) {
+    left: 6px;
+}
+
+.trash-line:nth-child(2) {
+    left: 12px;
+}
+
+.trash-line:nth-child(3) {
+    left: 18px;
+}
+
+.trash-line:nth-child(4) {
+    left: 24px;
+}
+
+.trash-label {
+    margin-top: 2px;
+    font-size: 14px;
+    color: black;
+    font-family: "Chicago", "Krungthep", "ChicagoFLF", monospace;
+    background: white;
+    padding: 1px 4px;
+    display: inline-block;
 }
