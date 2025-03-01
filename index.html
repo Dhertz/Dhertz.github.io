@@ -54,8 +54,8 @@
     let isDragging = false;
     let startX;
     let startY;
-    let xOffset = -draggableWindow.clientWidth / 2;
-    let yOffset = -draggableWindow.clientHeight / 2;
+    let xOffset;
+    let yOffset;
 
     titleBar.addEventListener('mousedown', dragStart);
     document.addEventListener('mousemove', drag);
@@ -64,6 +64,12 @@
     function dragStart(e) {
       if (e.target === titleBar || e.target.parentNode === titleBar) {
         isDragging = true;
+        if (xOffset == undefined) {
+          xOffset = -draggableWindow.clientWidth / 2;
+        }
+        if (yOffset == undefined) {
+          yOffset = -draggableWindow.clientHeight / 2;
+        }
         startX = e.clientX - xOffset;
         startY = e.clientY - yOffset;
       }
