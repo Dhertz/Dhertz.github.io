@@ -10,7 +10,8 @@
   <link href='static/images/favicon.ico' rel='icon' sizes='16x16 32x32 64x64' type='image/x-icon'>
 </head>
 <body>
-  <div id="desktop-trash" class="trash-can">
+  <div class="window-outline centre start"></div>
+  <!-- <div id="desktop-trash" class="trash-can">
     <div class="trash-icon">
       <div class="trash-handle"></div>
       <div class="trash-top"></div>
@@ -22,10 +23,10 @@
       </div>
     </div>
     <div class="trash-label">Trash</div>
-  </div>
+  </div> -->
   <div class='animation' itemscope='' itemtype='http://schema.org/Person'>
     <meta content='Dan Hertz' itemprop='name'>
-    <meta content='Engineering Manager at Nightfall AI' itemprop='jobTitle'>
+    <meta content='Engineering Manager at Assembled' itemprop='jobTitle'>
       <div class='centre start' id="draggable-window">
         <div class='title'><div class='close' id="close-button">
           <div class="close-line"></div>
@@ -51,11 +52,25 @@
 
     const draggableWindow = document.getElementById('draggable-window');
     const titleBar = draggableWindow.querySelector('.title');
+    //const trashCan = document.getElementById('desktop-trash');
+    const outline = document.querySelector('.window-outline');
     let isDragging = false;
     let startX;
     let startY;
     let xOffset;
     let yOffset;
+
+    // Function to update outline size
+    function updateOutlineSize() {
+      const rect = draggableWindow.getBoundingClientRect();
+      outline.style.width = rect.width + 'px';
+      outline.style.height = rect.height + 'px';
+    }
+
+    // Update outline size initially and on window resize
+    updateOutlineSize();
+    outline.style.transform = window.getComputedStyle(draggableWindow).transform;
+    window.addEventListener('resize', updateOutlineSize);
 
     titleBar.addEventListener('mousedown', dragStart);
     document.addEventListener('mousemove', drag);
@@ -64,12 +79,15 @@
     function dragStart(e) {
       if (e.target === titleBar || e.target.parentNode === titleBar) {
         isDragging = true;
-        if (xOffset == undefined) {
+        outline.style.display = 'block';
+
+        if (xOffset === undefined) {
           xOffset = -draggableWindow.clientWidth / 2;
         }
-        if (yOffset == undefined) {
+        if (yOffset === undefined) {
           yOffset = -draggableWindow.clientHeight / 2;
         }
+
         startX = e.clientX - xOffset;
         startY = e.clientY - yOffset;
       }
@@ -80,11 +98,35 @@
         e.preventDefault();
         xOffset = e.clientX - startX;
         yOffset = e.clientY - startY;
-        setTranslate(xOffset, yOffset, draggableWindow);
+        setTranslate(xOffset, yOffset, outline);
       }
     }
 
+    function removeWindow() {
+      draggableWindow.style.display = 'none';
+      outline.style.display = 'none';
+      setTimeout(() => {
+        draggableWindow.classList.remove('trash-animation');
+        draggableWindow.style.display = '';
+        const resetTransform = 'translate(-50%, -50%)';
+        draggableWindow.style.transform = resetTransform;
+        outline.style.transform = resetTransform;
+        const contactDiv = draggableWindow.querySelector('.contact');
+        const originalContent = contactDiv.innerHTML;
+        contactDiv.innerHTML = "<div style='font-size: 1.2em; margin: 20px;'><br>Nice try! ;-)</div>";
+        setTimeout(() => {
+          contactDiv.innerHTML = originalContent;
+          xOffset = undefined;
+          yOffset = undefined;
+        }, 2000);
+      }, 1000);
+    }
+
     function dragEnd(e) {
+      if (isDragging) {
+        setTranslate(xOffset, yOffset, draggableWindow);
+        outline.style.display = 'none';
+      }
       isDragging = false;
     }
 
@@ -92,10 +134,9 @@
       el.style.transform = `translate(${xPos}px, ${yPos}px)`;
     }
 
-    // Make the close button functional
     const closeButton = document.getElementById('close-button');
     closeButton.addEventListener('click', () => {
-      draggableWindow.style.display = 'none';
+      removeWindow();
     });
   </script>
 </body>
