@@ -169,23 +169,39 @@
     }
 
     function removeWindow() {
+      draggableWindow.style.animation = '';
+      outline.style.display = 'block';
+
+      const rect = outline.getBoundingClientRect();
+
+      outline.style.transition = "transform 0.7s, width 0.7s, height 0.7s";
+      outline.style.width = '0px';
+      outline.style.height = '0px';
+      outline.style.transform = `translate(calc(45vw), calc(-45vh))`;
       draggableWindow.style.display = 'none';
-      outline.style.display = 'none';
+      const resetTransform = 'translate(-50%, -50%)';
+
       setTimeout(() => {
-        draggableWindow.classList.remove('trash-animation');
-        draggableWindow.style.display = '';
-        const resetTransform = 'translate(-50%, -50%)';
-        draggableWindow.style.transform = resetTransform;
+        outline.style.display = 'none';
+        outline.style.transition = 'none';
         outline.style.transform = resetTransform;
-        const contactDiv = draggableWindow.querySelector('.contact');
-        const originalContent = contactDiv.innerHTML;
-        contactDiv.innerHTML = "<div style='font-size: 1.2em; margin: 20px;'><br>Nice try! ;-)</div>";
         setTimeout(() => {
-          contactDiv.innerHTML = originalContent;
+          draggableWindow.style.display = '';
+          draggableWindow.style.transform = resetTransform;
+          const contactDiv = draggableWindow.querySelector('.contact');
+          const originalContent = contactDiv.innerHTML;
+          contactDiv.innerHTML = "<div style='font-size: 1.2em; margin: 20px;'><br>Nice try! ;-)</div>";
+          updateOutlineSize();
           xOffset = undefined;
           yOffset = undefined;
-        }, 2000);
-      }, 1000);
+          setTimeout(() => {
+            contactDiv.innerHTML = originalContent;
+            updateOutlineSize();
+            xOffset = undefined;
+            yOffset = undefined;
+          }, 2000);
+        }, 100);
+      }, 650);
     }
 
     function dragEnd(e) {

@@ -369,3 +369,16 @@ a:link, :visited
 .menu-item.active .dropdown {
     display: block;
 }
+
+@keyframes closeWindow {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(100vw, -100vh) scale(0);
+    }
+}
+
+.window-close-animation {
+    animation: closeWindow 16s linear forwards;
+}
