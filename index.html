@@ -10,8 +10,73 @@
   <link href='static/images/favicon.ico' rel='icon' sizes='16x16 32x32 64x64' type='image/x-icon'>
 </head>
 <body>
-  <div class="window-outline centre start"></div>
-  <!-- <div id="desktop-trash" class="trash-can">
+  <!--
+  <div class="menu-bar">
+    <div class="menu-item">
+      <span></span>
+      <div class="dropdown">
+        <div class="dropdown-item">About This Mac</div>
+        <div class="dropdown-item">System Settings...</div>
+        <div class="dropdown-item">App Store...</div>
+        <div class="dropdown-item">Recent Items</div>
+        <div class="dropdown-item">Force Quit...</div>
+        <div class="dropdown-item">Sleep</div>
+        <div class="dropdown-item">Restart...</div>
+        <div class="dropdown-item">Shut Down...</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      File
+      <div class="dropdown">
+        <div class="dropdown-item">New</div>
+        <div class="dropdown-item">Open...</div>
+        <div class="dropdown-item">Close</div>
+        <div class="dropdown-item">Save</div>
+        <div class="dropdown-item">Save As...</div>
+        <div class="dropdown-item">Print...</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      Edit
+      <div class="dropdown">
+        <div class="dropdown-item">Undo</div>
+        <div class="dropdown-item">Redo</div>
+        <div class="dropdown-item">Cut</div>
+        <div class="dropdown-item">Copy</div>
+        <div class="dropdown-item">Paste</div>
+        <div class="dropdown-item">Select All</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      View
+      <div class="dropdown">
+        <div class="dropdown-item">Show Toolbar</div>
+        <div class="dropdown-item">Hide Sidebar</div>
+        <div class="dropdown-item">Enter Full Screen</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      Label
+      <div class="dropdown">
+        <div class="dropdown-item">None</div>
+        <div class="dropdown-item">Red</div>
+        <div class="dropdown-item">Orange</div>
+        <div class="dropdown-item">Yellow</div>
+        <div class="dropdown-item">Green</div>
+        <div class="dropdown-item">Blue</div>
+        <div class="dropdown-item">Purple</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      Special
+      <div class="dropdown">
+        <div class="dropdown-item">Clean Up</div>
+        <div class="dropdown-item">Sort By</div>
+        <div class="dropdown-item">Empty Trash</div>
+      </div>
+    </div>
+  </div>
+  <div id="desktop-trash" class="trash-can">
     <div class="trash-icon">
       <div class="trash-handle"></div>
       <div class="trash-top"></div>
@@ -24,6 +89,7 @@
     </div>
     <div class="trash-label">Trash</div>
   </div> -->
+  <div class="window-outline centre start"></div>
   <div class='animation' itemscope='' itemtype='http://schema.org/Person'>
     <meta content='Dan Hertz' itemprop='name'>
     <meta content='Engineering Manager at Assembled' itemprop='jobTitle'>
@@ -52,7 +118,7 @@
 
     const draggableWindow = document.getElementById('draggable-window');
     const titleBar = draggableWindow.querySelector('.title');
-    //const trashCan = document.getElementById('desktop-trash');
+    const trashCan = document.getElementById('desktop-trash');
     const outline = document.querySelector('.window-outline');
     let isDragging = false;
     let startX;
@@ -137,6 +203,41 @@
     const closeButton = document.getElementById('close-button');
     closeButton.addEventListener('click', () => {
       removeWindow();
+    });
+
+    const menuItems = document.querySelectorAll('.menu-item');
+    let isMenuActive = false;
+
+    menuItems.forEach(item => {
+      item.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isMenuActive = true;
+        menuItems.forEach(mi => mi.classList.remove('active'));
+        item.classList.add('active');
+      });
+
+      item.addEventListener('mouseenter', (e) => {
+        if (isMenuActive) {
+          menuItems.forEach(mi => mi.classList.remove('active'));
+          item.classList.add('active');
+        }
+      });
+    });
+
+    const dropdowns = document.querySelectorAll('.dropdown-item');
+    dropdowns.forEach(dropdownitem => {
+      dropdownitem.addEventListener('mouseenter', (e) => {
+        e.preventDefault();
+          if (isMenuActive) {
+            dropdowns.forEach(di => di.classList.remove('active'));
+            dropdownitem.classList.add('active');
+          }
+      });
+    });
+
+    document.addEventListener('mouseup', () => {
+      isMenuActive = false;
+      menuItems.forEach(mi => mi.classList.remove('active'));
     });
   </script>
 </body>

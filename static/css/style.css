@@ -45,7 +45,7 @@ body {
     }
 }
 
-.title, .contact, .trash-can, .trash-label, .footer {
+.title, .contact, .trash-can, .trash-label, .footer, .menu-item, .dropdown-item {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -149,9 +149,6 @@ body {
 .contact {
 	padding: 10px 0 10px 0;
     user-select: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
 }
 
 .button {
@@ -317,4 +314,58 @@ a:link, :visited
     pointer-events: none;
     z-index: 1000;
     display: none;
-  }
+}
+
+.menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-family: "Chicago", "Krungthep", "ChicagoFLF", "Courier Dan", "Courier", "monospace", sans-serif;
+    font-size: 20px;
+    z-index: 1000;
+    border-bottom: 2px solid black;
+}
+
+.menu-item {
+    position: relative;
+    padding: 0 10px;
+    cursor: default;
+    color: #000;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 2px 2px 0 rgba(0,0,0,1);
+    min-width: 150px;
+}
+
+.dropdown-item {
+    padding: 5px 20px;
+    white-space: nowrap;
+    color: #000;
+}
+
+.dropdown-item:active {
+    background-color: black;
+    color: white;
+}
+
+.menu-item.active, .dropdown-item.active {
+    background-color:black;
+    color: white;
+}
+
+.menu-item.active .dropdown {
+    display: block;
+}
