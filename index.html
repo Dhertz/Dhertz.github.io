@@ -174,7 +174,7 @@
 
       const rect = outline.getBoundingClientRect();
 
-      outline.style.transition = "transform 0.7s, width 0.7s, height 0.7s";
+      outline.style.transition = "transform 0.5s, width 0.5s, height 0.5s";
       outline.style.width = '0px';
       outline.style.height = '0px';
       outline.style.transform = `translate(calc(45vw), calc(-45vh))`;
@@ -201,7 +201,7 @@
             yOffset = undefined;
           }, 1000);
         }, 2000);
-      }, 650);
+      }, 450);
     }
 
     function dragEnd(e) {
@@ -255,5 +255,15 @@
       isMenuActive = false;
       menuItems.forEach(mi => mi.classList.remove('active'));
     });
+
+    document.addEventListener('mousedown', (e) => {
+      if (e.target.closest('#draggable-window')) {
+        draggableWindow.classList.add('window-active');
+      } else {
+        draggableWindow.classList.remove('window-active');
+      }
+    });
+
+    draggableWindow.classList.add('window-active');
   </script>
 </body>
